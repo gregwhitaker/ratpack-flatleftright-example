@@ -1,0 +1,39 @@
+buildscript {
+    dependencies {
+        classpath 'com.h2database:h2:1.4.191'
+    }
+}
+
+plugins {
+    id 'com.gradle.build-scan' version '1.16'
+    id 'io.ratpack.ratpack-java' version '1.5.4'
+    id 'org.flywaydb.flyway' version '5.2.0'
+}
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
+    publishAlways()
+}
+
+sourceCompatibility = 1.8
+mainClassName = 'ratpack.example.Main'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile ratpack.dependency('guice')
+    compile ratpack.dependency('hikari')
+    compile ratpack.dependency('h2')
+}
+
+flyway {
+    url = 'jdbc:h2:./build/database'
+    user = 'sa'
+    password = 'sa'
+}
+build.dependsOn(flywayMigrate)
+clean.dependsOn(flywayClean)
