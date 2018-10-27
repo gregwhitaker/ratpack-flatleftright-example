@@ -8,9 +8,17 @@ Run the following Gradle command to build the example:
     ./gradlew clean build
     
 ## Running the Example
-Run the following Gradle command to start the example:
+1. Run the following Gradle command to start the example:
 
-    ./gradlew run
+        ./gradlew run
+    
+2. Execute the following command to retrieve the employee widget report:
+
+        curl http://localhost:5050/api/v1/reports/employees/1/widgets
+        
+    If sucessful you will see the following response:
+        
+        {"employeeId":1,"firstName":"John","lastName":"Smith","inspectedWidgets":[{"widgetId":2,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":22,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":36,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":37,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":38,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":39,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":42,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":46,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":49,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":62,"inspectionDate":"2018-10-27 10:38:35"},{"widgetId":72,"inspectionDate":"2018-10-27 10:38:35"}]}
     
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-leftright-example/issues).
