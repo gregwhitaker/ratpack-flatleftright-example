@@ -25,4 +25,8 @@ public class WidgetService {
     public Promise<List<Widget>> getAllWidgets() {
         return widgetDao.findAll();
     }
+
+    public Promise<List<Widget>> getAllWidgetsInspectedBy(Integer employeeId) {
+        return widgetDao.findAllInspectedBy(employeeId);
+    }
 }

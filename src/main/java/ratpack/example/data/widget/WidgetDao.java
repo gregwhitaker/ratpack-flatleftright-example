@@ -17,6 +17,7 @@ public class WidgetDao {
 
     private static final String SELECT_WIDGET_SQL = "SELECT * FROM widget WHERE widget_id = ?";
     private static final String SELECT_WIDGETS_SQL = "SELECT * FROM widget";
+    private static final String SELECT_WIDGETS_INSPECTEDBY_SQL = "SELECT * FROM widget WHERE widget_inspector_id = ?";
 
     @Inject
     private DataSource dataSource;
@@ -48,6 +49,31 @@ public class WidgetDao {
         return Blocking.get(() -> {
             try (Connection conn = dataSource.getConnection()) {
                 try (PreparedStatement ps = conn.prepareStatement(SELECT_WIDGETS_SQL)) {
+                    try (ResultSet rs = ps.executeQuery()) {
+                        List<Widget> widgets = new ArrayList<>();
+
+                        while (rs.next()) {
+                            Widget widget = new Widget();
+                            widget.setId(rs.getInt("widget_id"));
+                            widget.setInspectorId(rs.getInt("widget_inspector_id"));
+                            widget.setInspectionDate(rs.getTimestamp("widget_inspection_ts").toInstant());
+
+                            widgets.add(widget);
+                        }
+
+                        return widgets;
+                    }
+                }
+            }
+        });
+    }
+
+    public Promise<List<Widget>> findAllInspectedBy(Integer employeeId) {
+        return Blocking.get(() -> {
+            try (Connection conn = dataSource.getConnection()) {
+                try (PreparedStatement ps = conn.prepareStatement(SELECT_WIDGETS_INSPECTEDBY_SQL)) {
+                    ps.setInt(1, employeeId);
+
                     try (ResultSet rs = ps.executeQuery()) {
                         List<Widget> widgets = new ArrayList<>();
 
