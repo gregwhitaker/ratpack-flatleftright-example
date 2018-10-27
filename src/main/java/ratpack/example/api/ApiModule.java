@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import ratpack.example.api.employees.GetEmployeesHandler;
 import ratpack.example.api.reports.GetEmployeeWidgetsReportHandler;
 import ratpack.example.api.reports.GetWidgetsReportHandler;
+import ratpack.example.api.widgets.GetWidgetsHandler;
 
 public class ApiModule extends AbstractModule {
 
@@ -12,6 +13,7 @@ public class ApiModule extends AbstractModule {
         bind(ApiHandlers.class);
 
         bind(GetEmployeesHandler.class);
+        bind(GetWidgetsHandler.class);
         bind(GetEmployeeWidgetsReportHandler.class);
         bind(GetWidgetsReportHandler.class);
     }
