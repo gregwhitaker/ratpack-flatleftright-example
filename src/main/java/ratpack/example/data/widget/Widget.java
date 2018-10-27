@@ -4,31 +4,31 @@ import java.time.Instant;
 
 public class Widget {
 
-    private Long id;
-    private Integer inspectId;
-    private Instant inspectDate;
+    private Integer id;
+    private Integer inspectorId;
+    private Instant inspectionDate;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getInspectId() {
-        return inspectId;
+    public Integer getInspectorId() {
+        return inspectorId;
     }
 
-    public void setInspectId(Integer inspectId) {
-        this.inspectId = inspectId;
+    public void setInspectorId(Integer inspectorId) {
+        this.inspectorId = inspectorId;
     }
 
-    public Instant getInspectDate() {
-        return inspectDate;
+    public Instant getInspectionDate() {
+        return inspectionDate;
     }
 
-    public void setInspectDate(Instant inspectDate) {
-        this.inspectDate = inspectDate;
+    public void setInspectionDate(Instant inspectionDate) {
+        this.inspectionDate = inspectionDate;
     }
 }
