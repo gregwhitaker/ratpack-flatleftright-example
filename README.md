@@ -1,4 +1,5 @@
 # ratpack-flatleftright-example
+[![Build Status](https://travis-ci.org/gregwhitaker/ratpack-flatleftright-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/ratpack-flatleftright-example)
 
 An example of using `flatLeft` and `flatRight` in [Ratpack](https://www.ratpack.io).
 
