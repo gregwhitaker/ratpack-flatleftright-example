@@ -1,6 +1,9 @@
-# ratpack-leftright-example
+# ratpack-flatleftright-example
 
-An example of using `left` and `right` in [Ratpack](https://www.ratpack.io).
+An example of using `flatLeft` and `flatRight` in [Ratpack](https://www.ratpack.io).
+
+The `flatLeft` and `flatRight` commands add values to the returned `Pair` just like the `left` and `right` commands. However,
+unlike left and right, flatLeft and flatRight add the resolved value of the Promise to the Pair and not the Promise itself.
 
 ## Building the Example
 Run the following Gradle command to build the example:

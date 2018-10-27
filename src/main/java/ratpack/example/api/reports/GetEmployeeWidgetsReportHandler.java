@@ -25,26 +25,24 @@ public class GetEmployeeWidgetsReportHandler implements Handler {
         Integer employeeId = Integer.parseInt(ctx.getAllPathTokens().get("employeeId"));
 
         employeeService.getEmployee(employeeId)
-                .right(employee -> widgetService.getAllWidgetsInspectedBy(employeeId))
+                .flatRight(employee -> widgetService.getAllWidgetsInspectedBy(employeeId))
                 .then(pair -> {
                     Response response = new Response();
                     response.employeeId = pair.left.getId();
                     response.firstName = pair.left.getFirstName();
                     response.lastName = pair.left.getLastName();
 
-                    pair.right.then(widgets -> {
-                        widgets.forEach(widget -> {
-                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss").withZone(ZoneId.systemDefault());
+                    pair.right.forEach(widget -> {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss").withZone(ZoneId.systemDefault());
 
-                            InspectedWidgetResponse inspectedWidgetResponse = new InspectedWidgetResponse();
-                            inspectedWidgetResponse.widgetId = widget.getId();
-                            inspectedWidgetResponse.inspectionDate = dtf.format(widget.getInspectionDate());
+                        InspectedWidgetResponse inspectedWidgetResponse = new InspectedWidgetResponse();
+                        inspectedWidgetResponse.widgetId = widget.getId();
+                        inspectedWidgetResponse.inspectionDate = dtf.format(widget.getInspectionDate());
 
-                            response.addInspectedWidget(inspectedWidgetResponse);
-                        });
-
-                        ctx.render(Jackson.json(response));
+                        response.addInspectedWidget(inspectedWidgetResponse);
                     });
+
+                    ctx.render(Jackson.json(response));
                 });
     }
 
