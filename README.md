@@ -1,6 +1,6 @@
-# ratpack-promisejoin-example
+# ratpack-leftright-example
 
-An example of joining multiple promises with a parallel batch in [Ratpack](https://www.ratpack.io).
+An example of using `left` and `right` in [Ratpack](https://www.ratpack.io).
 
 ## Building the Example
 Run the following Gradle command to build the example:
@@ -13,7 +13,7 @@ Run the following Gradle command to start the example:
     ./gradlew run
     
 ## Bugs and Feedback
-For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-promisejoin-example/issues).
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-leftright-example/issues).
 
 ## License
 MIT License
