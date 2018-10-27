@@ -1,5 +1,18 @@
 # ratpack-promisejoin-example
 
+## Building the Example
+Run the following Gradle command to build the example:
+
+    ./gradlew clean build
+    
+## Running the Example
+Run the following Gradle command to start the example:
+
+    ./gradlew run
+    
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-promisejoin-example/issues).
+
 ## License
 MIT License
 
