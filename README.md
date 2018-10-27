@@ -1,5 +1,7 @@
 # ratpack-promisejoin-example
 
+An example of joining multiple promises in a parallel batch in [Ratpack](https://www.ratpack.io).
+
 ## Building the Example
 Run the following Gradle command to build the example:
 
